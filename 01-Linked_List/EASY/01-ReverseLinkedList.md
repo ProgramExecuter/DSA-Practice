@@ -68,5 +68,4 @@ ListNode* reverseList(ListNode* head) {
         return head;
     }
 };
-
 ```

@@ -40,7 +40,7 @@ public:
 };
 ```
 
-<br/><br/>
+<br/>
 
 <h3><b><u>Approach 2</u></b></h3>
 
@@ -134,7 +134,7 @@ public:
 };
 ```
 
-<br/><br/>
+<br/>
 
 <h3><b><u>Approach 2</u></b></h3>
 

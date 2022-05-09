@@ -70,7 +70,7 @@ ListNode* reverseList(ListNode* head) {
 };
 ```
 
-<br/><br/><hr/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/middle-of-the-linked-list/">Middle Of Linked List</a></h1>
 
@@ -100,7 +100,7 @@ public:
 };
 ```
 
-<br/><br/><hr/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/linked-list-cycle/">Linked List Cycle</a></h1>
 
@@ -168,7 +168,7 @@ public:
 };
 ```
 
-<br/><br/><hr/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/merge-two-sorted-lists/">Merge Two Sorted Lists</a></h1>
 
@@ -217,7 +217,7 @@ public:
 };
 ```
 
-<br/><br/><hr/><br/><br/>
+<br/><br/><br/><br/><br/>
 
 <h1><b>Problem</b> - <a href=""></a></h1>
 

@@ -1,3 +1,40 @@
+<table>
+<tr>
+    <th>Problem</th>
+    <th>Tags</th>
+</tr>
+<tr>
+    <td><a href="#1">Reverse A Linked List</a></td>
+    <td>Stack</td>
+</tr>
+<tr>
+    <td><a href="#2">Middle Of Linked List</a></td>
+    <td>Two Pointer</td>
+</tr>
+<tr>
+    <td><a href="#3">Linked List Cycle</a></td>
+    <td>Two Pointer, Hash-Table</td>
+</tr>
+<tr>
+    <td><a href="#4">Merge Two Sorted List</a></td>
+    <td>Two Pointer</td>
+</tr>
+<tr>
+    <td><a href="#5">Intersection Of Two Linked List</a></td>
+    <td>Two Pointer</td>
+</tr>
+<tr>
+    <td><a href="#6">Remove Duplicates From Sorted List</a></td>
+    <td>Two Pointer</td>
+</tr>
+<tr>
+    <td><a href="#7">Palindrome</a></td>
+    <td>Stack, Two Pointer</td>
+</tr>
+</table>
+
+<div id="1">
+
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/reverse-linked-list/">
 Reverse A Linked List</a></h1>
 
@@ -70,7 +107,11 @@ ListNode* reverseList(ListNode* head) {
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="2">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/middle-of-the-linked-list/">Middle Of Linked List</a></h1>
 
@@ -100,7 +141,11 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="3">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/linked-list-cycle/">Linked List Cycle</a></h1>
 
@@ -168,7 +213,11 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="4">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/merge-two-sorted-lists/">Merge Two Sorted Lists</a></h1>
 
@@ -217,7 +266,11 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="5">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/intersection-of-two-linked-lists/">Intersection Of Two Linked List</a></h1>
 
@@ -265,7 +318,11 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="6">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/">Remove Duplicates From Sorted List</a></h1>
 
@@ -312,7 +369,11 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
+
+<div id="7">
 
 <h1><b>Problem</b> - <a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></h1>
 
@@ -417,3 +478,5 @@ public:
     }
 };
 ```
+
+</div>

@@ -311,3 +311,109 @@ public:
     }
 };
 ```
+
+<br/><br/><br/><br/><br/>
+
+<h1><b>Problem</b> - <a href="https://leetcode.com/problems/palindrome-linked-list/">Palindrome Linked List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Find middle of linked list using <b>turtoise-hare</b> method, and push first half of list's values in the stack. <br/>
+&emsp; 2. If fast becomes `NULL` after loop, then list is of even-length, else odd-length `bool flag = fast ? true : false` <br/>
+&emsp; 3. If `flag == true` then move the `slow` by 1 position(skip real middle of odd-length list). <br/>
+&emsp; 3. Now compare stack's values with `slow`'s values, to check for palindrome condition. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(N)</b> <br/>
+
+```
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        stack<int> st;
+
+        ListNode *slow = head, *fast = head;
+
+        while(fast  &&  fast->next) {
+            st.push(slow->val);                     // Push the first half list's values
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        bool flag = fast ? true : false;            // If fast != NULL, then list is odd length, else if is of even length
+
+        if(flag)    slow = slow->next;              // If the list is of odd length, then move 'slow' ahead by 1 for starting comparisons
+
+        while(!st.empty()) {
+            if(slow->val != st.top())               // Not a palindrome
+                return false;
+
+            st.pop();
+            slow = slow->next;
+        }
+
+        return true;
+    }
+};
+```
+
+<br/><br/>
+
+<h3><b><u>Approach 2</u></b></h3>
+
+&emsp; 1. Find middle of the linked list starting from 2nd node(1-indexed), so that we can implement for both(odd & even) lengths `list`. <br/>
+&emsp; 2. Reverse the second half of the linked list. <br/>
+&emsp; 3. Compare both the halves until one of them reaches `NULL`. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+```
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *prev = NULL, *curr = head, *nxt = NULL;
+
+        while(curr) {
+            nxt = curr->next;                               // Save 'next'
+            curr->next = prev;                              // Reverse link
+            prev = curr;                                    // Save 'prev' for next Node
+            curr = nxt;                                     // Move ahead
+        }
+
+        return prev;                                        // New head
+    }
+    bool isPalindrome(ListNode* head) {
+        if(!head  ||  !head->next)                          // If noOfNodes <= 1, return TRUE
+            return true;
+
+        ListNode *slow = head->next, *fast = head->next;
+        ListNode *prev = head;
+
+        while(fast && fast->next) {                         // Get middle of list, for both(odd & even length)
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        prev->next = reverseList(slow);                     // Reverse 2nd half of list
+                                                            // and point prev's next to reversed list's head
+
+        slow = head, fast = prev->next;                     // Now both of the halves of list are at their heads
+
+        while(slow  &&  fast) {
+            if(slow->val  !=  fast->val)                    // Not a palindrome
+                return false;
+
+            slow = slow->next;
+            fast = fast->next;
+        }
+
+        prev->next = reverseList(prev->next);               // Reverse back the list, to get original list
+
+        return true;
+    }
+};
+```

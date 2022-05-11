@@ -1,19 +1,28 @@
 <table>
   <tr>
+      <th>No.</th>
       <th>Problem</th>
       <th>Tags</th>
   </tr>
   <tr>
+      <td>01</td>
       <td><a href="#1">Swap Nodes In Pairs</a></td>
       <td>Recursion</td>
   </tr>
   <tr>
+      <td>02</td>
       <td><a href="#2">Copy List With Random Pointer</a></td>
       <td>Hash-Table</td>
   </tr>
   <tr>
+      <td>03</td>
       <td><a href="#3">Insertion Sort List</a></td>
       <td>Sorting</td>
+  </tr>
+  <tr>
+      <td>04</td>
+      <td><a href="#4">Odd Even Linked List</a></td>
+      <td>3-Pointer</td>
   </tr>
 </table>
 
@@ -207,6 +216,56 @@ public:
         }
 
         return dummy->next;
+    }
+};
+```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="4">
+
+<h1><b>Problem</b> - <a href="https://leetcode.com/problems/odd-even-linked-list/">Odd Even Linked List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Create two lists `odd` and `even`. <br/>
+&emsp; 2. Traverse the main list, then put odd-indexed nodes in `odd` list, and even-indexed nodes in `even` list. (1-indexed) <br/>
+&emsp; 3. Finally the last node of `odd` list points to first node of `even` list. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+```
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        ListNode *odd = new ListNode(0), *even = new ListNode(0);
+        ListNode *curr = head, *currO = odd, *currE = even;
+        int idx = 1;
+
+        while(curr) {
+            ListNode *nxt = curr->next;                                 // Save 'next'
+
+            curr->next = NULL;                                          // Make 'next' of this node = NULL
+            if(idx%2 == 1) {                                            // If the node is even-indexed then push it to even list else push it to odd list
+                currO->next = curr;
+                currO = currO->next;
+            }
+            else {
+                currE->next = curr;
+                currE = currE->next;
+            }
+
+            curr = nxt;
+            ++idx;
+        }
+
+        currO->next = even->next;                                       // Link (odd list) -> (even list)
+
+        return odd->next;
     }
 };
 ```

@@ -35,7 +35,7 @@
 
 <div id="1">
 
-<h1><b>Problem</b> - <a href="https://leetcode.com/problems/swap-nodes-in-pairs/">Swap Nodes In Pairs</a></h1>
+<h1><b>Problem</b> - <a href="https://bit.ly/3suNH2W">Swap Nodes In Pairs</a></h1>
 
 <h3><b><u>Approach 1</u></b></h3>
 
@@ -68,7 +68,7 @@ public:
 
 <div id="2">
 
-<h1><b>Problem</b> - <a href="https://leetcode.com/problems/copy-list-with-random-pointer/">Copy List With Random Pointer</a></h1>
+<h1><b>Problem</b> - <a href="https://bit.ly/3L2XDaf">Copy List With Random Pointer</a></h1>
 
 <h3><b><u>Approach 1</u></b></h3>
 
@@ -182,7 +182,7 @@ public:
 
 <div id="3">
 
-<h1><b>Problem</b> - <a href="https://leetcode.com/problems/insertion-sort-list/">Insertion Sort List</a></h1>
+<h1><b>Problem</b> - <a href="https://bit.ly/3MXwJSy">Insertion Sort List</a></h1>
 
 <h3><b><u>Approach 1</u></b></h3>
 
@@ -231,7 +231,7 @@ public:
 
 <div id="4">
 
-<h1><b>Problem</b> - <a href="https://leetcode.com/problems/odd-even-linked-list/">Odd Even Linked List</a></h1>
+<h1><b>Problem</b> - <a href="https://bit.ly/3PgcnpC">Odd Even Linked List</a></h1>
 
 <h3><b><u>Approach 1</u></b></h3>
 
@@ -281,7 +281,7 @@ public:
 
 <div id="5">
 
-<h1><b>Problem</b> - <a href="https://leetcode.com/problems/swapping-nodes-in-a-linked-list/">Swapping Nodes In a Linked List</a></h1>
+<h1><b>Problem</b> - <a href="https://bit.ly/3vZonEd">Swapping Nodes In a Linked List</a></h1>
 
 <h3><b><u>Approach 1</u></b></h3>
 

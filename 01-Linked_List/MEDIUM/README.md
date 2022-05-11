@@ -29,6 +29,11 @@
       <td><a href="#5">Swapping Nodes In a Linked List</a></td>
       <td>Pointer, 2-Pointer</td>
   </tr>
+  <tr>
+      <td>06</td>
+      <td><a href="#6">Split Linked List In Parts</a></td>
+      <td></td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -355,6 +360,74 @@ public:
         swap((*a)->next, (*b)->next);                   // Then swap outgoing pointers to both the nodes
 
         return head;
+    }
+};
+```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="6">
+
+<h1><b>Problem</b> - <a href="https://bit.ly/3LbyBpC">Split Linked List In Parts</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Calculate size of linked list. <br/>
+&emsp; 2. We get minimum required length of each list by `reqLen = len / k`, and extra length by `extra = len % k`. <br/>
+&emsp; 3. We have to add 1 extra node at starting lists, until `extra` reaches 0. <br/>
+&emsp; 4. Finally we add empty lists, if we used up all the nodes in the list, so that we can have `k` lists.
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+```
+class Solution {
+public:
+    int getLen(ListNode* head) {
+        ListNode *tmp = head;
+        int len = 0;
+
+        while(tmp) {
+            ++len;
+            tmp = tmp->next;
+        }
+
+        return len;
+    }
+    vector<ListNode*> splitListToParts(ListNode* head, int k) {
+        int len = getLen(head);                             // Get size of list
+
+        int reqLen = len / k;                               // Each list must have atleast these no. of nodes
+        int extra  = len % k;                               // We add 1 extra node to starting lists, until 'extra' becomes 0
+
+        vector<ListNode*> res;
+
+        ListNode *curr = head;
+
+        while(curr) {
+            int currLen = reqLen + (extra ? 1 : 0);
+
+            if(extra)   --extra;                            // Decrease 'extra', as we used 1
+
+            ListNode *tmp = curr, *nxt = NULL;
+            while(--currLen)                                // Reach last node of this list
+                tmp = tmp->next;
+
+            nxt = tmp->next;                                // Break link from this list's end to forward
+            tmp->next = NULL;
+
+            res.push_back(curr);                            // Push this list to 'res'
+
+            curr = nxt;                                     // Move ahead, for next list
+        }
+
+        while(res.size() < k)                               // Push NULL list for remaining lists
+            res.push_back(NULL);
+
+        return res;
     }
 };
 ```

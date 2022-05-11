@@ -24,6 +24,11 @@
       <td><a href="#4">Odd Even Linked List</a></td>
       <td>3-Pointer</td>
   </tr>
+  <tr>
+      <td>05</td>
+      <td><a href="#5">Swapping Nodes In a Linked List</a></td>
+      <td>Pointer, 2-Pointer</td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -266,6 +271,90 @@ public:
         currO->next = even->next;                                       // Link (odd list) -> (even list)
 
         return odd->next;
+    }
+};
+```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="5">
+
+<h1><b>Problem</b> - <a href="https://leetcode.com/problems/swapping-nodes-in-a-linked-list/">Swapping Nodes In a Linked List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Find k-th node from beginning using `while(--k)`. <br/>
+&emsp; 2. By moving previous pointer until it is at end of list, since it is k-ahead from current pointer, we get k-th node from end. <br/>
+&emsp; 3. Finally swap values of both nodes. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+```
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode *ptr1 = head, *ptr2 = head;
+        ListNode *kth = NULL;
+
+        while(--k)                                  // Find first node(k-th from beginning)
+            ptr1 = ptr1->next;
+
+        kth = ptr1;
+        ptr1 = ptr1->next;
+
+        while (ptr1) {                              // Find second node(k-th from end)
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
+
+        swap(ptr2->val, kth->val);                  // Swap both node's values
+
+        return head;
+    }
+};
+```
+
+<br/><br/>
+
+<h3><b><u>Approach 2(<a href="https://bit.ly/3N2BB8Y">ref</a>)</u></b></h3>
+
+&emsp; 1. Here concept is same for finding the `first`(k-th node from begin) and `second`(k-th node from end) nodes. <br/>
+&emsp; 2. Then after getting pointers to these nodes, we swap their incoming pointers first. <br/>
+&emsp; 3. Then we swap outgoing pointer. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+<caption>
+<b>!! </b><i style="font-size: 0.75rem">If we don't use pointer-to-pointer(**), then we will have to handle many edge cases</i>
+</caption>
+
+```
+class Solution {
+public:
+    ListNode* swapNodes(ListNode* head, int k) {
+        ListNode **a = &head;
+
+        while(--k) {                                    // Find k-th node from beginning
+            a = &(*a)->next;
+        }
+
+        ListNode **b = &head, **x = &(*a)->next;
+                                                        // Find k-th node from end by using 2-pointer
+        while(*x) {                                     // We move x(which is 'k' steps ahead) and 'b'(which is at start), thus we get k-th node from end
+            x = &(*x)->next;
+            b = &(*b)->next;
+        }
+
+        swap(*a, *b);                                   // Now first swap incoming pointers to both the nodes
+        swap((*a)->next, (*b)->next);                   // Then swap outgoing pointers to both the nodes
+
+        return head;
     }
 };
 ```

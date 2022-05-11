@@ -11,6 +11,10 @@
       <td><a href="#2">Copy List With Random Pointer</a></td>
       <td>Hash-Table</td>
   </tr>
+  <tr>
+      <td><a href="#3">Insertion Sort List</a></td>
+      <td>Sorting</td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -154,6 +158,55 @@ public:
         }
 
         return newHead;
+    }
+};
+```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="3">
+
+<h1><b>Problem</b> - <a href="https://leetcode.com/problems/insertion-sort-list/">Insertion Sort List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Remove the node from current list, and insert it into sorted list <br/>
+&emsp; 2. Perform this by traversing the list, and removing nodes from this list and putting it in `dummy` list. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N<sup>2</sup>)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+```
+class Solution {
+public:
+    void insertionSort(ListNode* &dummy, ListNode *x) {
+        ListNode *curr = dummy;
+
+        while(curr->next) {                                             // Find the node whose next node's value >= (to-be-inserted) node's value
+            if(curr->next->val >= x->val)
+                break;
+
+            curr = curr->next;
+        }
+
+        x->next = curr->next;                                           // Insert (to-be-inserted) node between 'curr' node and its next node
+        curr->next = x;
+    }
+    ListNode* insertionSortList(ListNode* head) {
+        ListNode *dummy = new ListNode(0), *tmp = new ListNode(0);
+        tmp->next = head;
+
+        while(tmp->next) {
+            ListNode *x = tmp->next;                                    // Remove this node from current list
+            tmp->next = tmp->next->next;
+
+            insertionSort(dummy, x);                                    // Insert this node in sorted list
+        }
+
+        return dummy->next;
     }
 };
 ```

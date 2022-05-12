@@ -471,7 +471,7 @@ public:
 &emsp; &emsp; b. Use `dummy` node for ease. <br/>
 <br/>
 
-<b><u>Time Complexity</u></b> - [ get - O(N) ], [ addAtHead - O(1) ], [ addAtTail - O(N) ], [ addAtIndex - O(N) ], [ deleteAtIndex - O(N) ] <br/>
+<b><u>Time Complexity</u></b> - [ <b>get</b> - O(N) ], [ <b>addAtHead</b> - O(1) ], [ <b>addAtTail</b> - O(N) ], [ <b>addAtIndex</b> - O(N) ], [ <b>deleteAtIndex</b> - O(N) ] <br/>
 <b><u>Space Complexity</u> - O(N)</b> <br/>
 
 ```

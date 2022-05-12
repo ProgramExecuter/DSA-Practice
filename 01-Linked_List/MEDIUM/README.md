@@ -39,6 +39,11 @@
       <td><a href="#7">Design Linked List</a></td>
       <td>Design</td>
   </tr>
+  <tr>
+      <td>08</td>
+      <td><a href="#8">Remove Zero Sum Consecutive Nodes From Linked List</a></td>
+      <td>Hash-Table</td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -564,6 +569,61 @@ public:
         head = dummy->next;                         // Re-assign 'head' if needed
 
         delete dummy;
+    }
+};
+```
+
+<br/><br/><br/><br/><br/>
+
+<div id="8">
+
+<h1><b>Problem</b> - <a href="https://bit.ly/3w5I0KT">Remove Zero Sum Consecutive Nodes from Linked List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Use prefix sum technique, take sum until each node while traversing the linked list, and put it in `map`. <br/>
+&emsp; 2. If we encounter a sum again, then it means starting from `previous sum's encounter node`(means node where we encountered this sum previosly)'s next node until `curr` node, this whole sub-list produced `0` sum. <br/>
+&emsp; 3. We remove this sub-list from list, and their related sub-part's entries in map <br/>
+&emsp; 4. While removing such sub-lists, we get our result. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(N)</b> <br/>
+
+```
+class Solution {
+public:
+    ListNode* removeZeroSumSublists(ListNode* head) {
+        map<int, ListNode*> mp;
+        int sum = 0;
+
+        ListNode *dummy = new ListNode(0);                              // Use 'dummy' node for ease
+        dummy->next = head;
+
+        ListNode* curr = dummy;
+        while(curr) {
+            sum += curr->val;
+
+            if(mp.find(sum) == mp.end()) {                              // This is first time this sum occuring
+                mp[sum] = curr;
+            }
+            else {
+                curr = mp[sum]->next;
+
+                int tmp = sum + curr->val;                              // Remove the sub-list which produced 0 sum
+                while(tmp != sum) {
+                    mp.erase(tmp);
+                    curr = curr->next;
+                    tmp += curr->val;
+                }
+
+                mp[sum]->next = curr->next;                             // Deleting list starts from start point's next node
+            }
+
+            curr = curr->next;
+        }
+
+        return dummy->next;
     }
 };
 ```

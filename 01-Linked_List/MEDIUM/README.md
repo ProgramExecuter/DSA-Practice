@@ -457,17 +457,17 @@ public:
 
 <h3><b><u>Approach 1</u></b></h3>
 
-&emsp; 1. <b>get</b>
+&emsp; 1. <b>get</b><br/>
 &emsp; &emsp; a. Reach `index` node, by `while(index--)`, if we reach `index` then `curr` will not be `NULL`, else it will be `NULL`.
-&emsp; 2. <b>addAtHead</b>
+&emsp; 2. <b>addAtHead</b><br/>
 &emsp; &emsp; a. Simply push new Node at head by `newNode->next = head`, `head = newNode`.
-&emsp; 3. <b>addAtTail</b>
-&emsp; &emsp; a. Reach last node by `while(curr->next)`, and then append the new Node, to last node's next
-&emsp; 4. <b>addAtIndex</b>
-&emsp; &emsp; a. Reach required index's previous node, then add the new Node after that 'previous node'.
-&emsp; &emsp; b. Use `dummy` node for ease.
-&emsp; 5. <b>deleteAtIndex</b>
-&emsp; &emsp; a. Reach required index's previous node, then delete node after that 'previous node'.
+&emsp; 3. <b>addAtTail</b><br/>
+&emsp; &emsp; a. Reach last node by `while(curr->next)`, and then append the new Node, to last node's next<br/>
+&emsp; 4. <b>addAtIndex</b><br/>
+&emsp; &emsp; a. Reach required index's previous node, then add the new Node after that 'previous node'.<br/>
+&emsp; &emsp; b. Use `dummy` node for ease.<br/>
+&emsp; 5. <b>deleteAtIndex</b><br/>
+&emsp; &emsp; a. Reach required index's previous node, then delete node after that 'previous node'.<br/>
 &emsp; &emsp; b. Use `dummy` node for ease. <br/>
 <br/>
 

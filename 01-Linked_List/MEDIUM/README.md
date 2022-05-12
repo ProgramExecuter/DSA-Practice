@@ -392,7 +392,7 @@ public:
 &emsp; 1. Calculate size of linked list. <br/>
 &emsp; 2. We get minimum required length of each list by `reqLen = len / k`, and extra length by `extra = len % k`. <br/>
 &emsp; 3. We have to add 1 extra node at starting lists, until `extra` reaches 0. <br/>
-&emsp; 4. Finally we add empty lists, if we used up all the nodes in the list, so that we can have `k` lists.
+&emsp; 4. Finally we add empty lists, if we used up all the nodes in the list, so that we can have `k` lists. <br/>
 <br/>
 
 <b><u>Time Complexity</u> - O(N)</b> <br/>
@@ -468,7 +468,7 @@ public:
 &emsp; &emsp; b. Use `dummy` node for ease.
 &emsp; 5. <b>deleteAtIndex</b>
 &emsp; &emsp; a. Reach required index's previous node, then delete node after that 'previous node'.
-&emsp; &emsp; b. Use `dummy` node for ease.
+&emsp; &emsp; b. Use `dummy` node for ease. <br/>
 <br/>
 
 <b><u>Time Complexity</u></b> - [get - O(N)], [addAtHead - O(1)], [addAtTail - O(N)], [addAtIndex - O(N)], [deleteAtIndex - O(N)] <br/>

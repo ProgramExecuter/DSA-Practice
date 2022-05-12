@@ -44,6 +44,11 @@
       <td><a href="#8">Remove Zero Sum Consecutive Nodes From Linked List</a></td>
       <td>Hash-Table</td>
   </tr>
+  <tr>
+      <td>09</td>
+      <td><a href="#9">Add Two Numbers</a></td>
+      <td>Two-Pointers, Math</td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -573,6 +578,8 @@ public:
 };
 ```
 
+</div>
+
 <br/><br/><br/><br/><br/>
 
 <div id="8">
@@ -627,3 +634,64 @@ public:
     }
 };
 ```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="8">
+
+<h1><b>Problem</b> - <a href="https://bit.ly/3sqhmu3">Add Two Numbers</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. We take `dummy` node, and we will get summed list's `head` in `dummy->next`. <br/>
+&emsp; 2. We traverse the lists until any of them hasn't reached end, then we add both lists's current node and `carry`. We then assign this value to `l1`'s current if it's `!NULL`, else assign it to `l2`'s current node. <br/>
+&emsp; 3. We do this until both of the lists reach end, after it if `carry != 0`, then we add a new node(last node) to the resultant sum-list, which contains `carry`'s value. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(N)</b> <br/>
+<b><u>Space Complexity</u> - O(1)</b> <br/>
+
+<caption>
+<b>!! </b><i style="font-size: 0.75rem">Here we are given reversed lists, and we also have to return reversed list, so no need for reversing list.</i>
+</caption>
+```
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode *dummy = new ListNode(0);
+
+        ListNode* curr = dummy;
+        int carry = 0;
+
+        while(l1  ||  l2) {
+            int sum = (l1 ? l1->val : 0) + (l2 ? l2->val : 0) + carry;      // Add numbers in nodes which aren't NULL
+
+            carry = sum / 10;                                               // Get new carry & sum
+            sum = sum % 10;
+
+            l1 ? l1->val = sum : l2->val = sum ;                            // sum is assigned to "l1" if it's !NULL, else assigned to "l2"
+
+            curr->next = l1 ? l1 : l2;                                      // Point next to "l1" it it's !NULL, else point to "l2"
+
+            l1 ? l1 = l1->next : NULL ;
+            l2 ? l2 = l2->next : NULL ;
+
+            curr = curr->next;                                              // Move ahead
+        }
+
+        if(carry > 0) {                                                     // 'carry` is not 0, we add last node
+            ListNode* lastNode = new ListNode(carry);
+            curr->next = lastNode;
+        }
+
+        l1 = dummy->next;                                                   // l1 is 'head' of summed-list
+        delete dummy;
+
+        return l1;
+    }
+
+};
+
+</div>

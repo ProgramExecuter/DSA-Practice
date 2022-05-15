@@ -49,6 +49,11 @@
       <td><a href="#9">Add Two Numbers</a></td>
       <td>Two-Pointers, Math</td>
   </tr>
+  <tr>
+      <td>10</td>
+      <td><a href="#10">Merge Sort List</a></td>
+      <td>Two-Pointers, Divide&Conquer, Sorting, Recursion</td>
+  </tr>
 </table>
 
 <br/><br/><br/><br/><br/>
@@ -691,6 +696,76 @@ public:
         delete dummy;
 
         return l1;
+    }
+};
+```
+
+</div>
+
+<br/><br/><br/><br/><br/>
+
+<div id="10">
+
+<h1><b>Problem</b> - <a href="https://bit.ly/3NcZxXh">Merge Sort List</a></h1>
+
+<h3><b><u>Approach 1</u></b></h3>
+
+&emsp; 1. Take the given list and break it into 2 lists using `turtoise-hare` method. Keep breaking the lists recursively untile we get lists of 1-size. <br/>
+&emsp; 2. Take two parts of sorted list in each recursion and merge them into a sorted list using `2-Pointer` approach. <br/>
+<br/>
+
+<b><u>Time Complexity</u> - O(NlogN)</b> <br/>
+<b><u>Space Complexity</u> - O(N)</b> <br/>
+
+```
+class Solution {
+public:
+    ListNode* merge(ListNode* list1, ListNode* list2) {
+        ListNode *dummy = new ListNode(0);                          // Take dummy node for ease
+
+        ListNode *l1 = list1, *l2 = list2, *curr = dummy;
+
+        while(l1  &&  l2) {
+            if(l1->val < l2->val) {                                 // Take the node which has lower value
+                curr->next = l1;
+                l1 = l1->next;
+            }
+            else {
+                curr->next = l2;
+                l2 = l2->next;
+            }
+
+            curr = curr->next;                                      // Move to next
+        }
+
+        curr->next = l1 ? l1 : l2;                                  // Append the list which is remaining
+
+        return dummy->next;
+    }
+    ListNode* mergeSort(ListNode* head) {
+        if(!head  ||  !head->next)                                  // If <= 1 node, return HEAD
+            return head;
+
+        ListNode *slow = head, *fast = head, *prev = NULL;
+
+        while(fast  &&  fast->next) {
+            prev = slow;                                            // save previous of 'slow'
+            slow = slow->next;                                      // 'fast' moves 2X faster than 'slow'
+            fast = fast->next->next;
+        }
+
+        prev->next = NULL;                                          // Break list into two parts (head, slow)
+
+        ListNode *l1, *l2;
+        l1 = mergeSort(head);                                       // Save sorted lists of 2 parts in (l1, l2)
+        l2 = mergeSort(slow);
+
+        head = merge(l1, l2);
+
+        return head;
+    }
+    ListNode* sortList(ListNode* head) {
+        return mergeSort(head);
     }
 };
 ```
